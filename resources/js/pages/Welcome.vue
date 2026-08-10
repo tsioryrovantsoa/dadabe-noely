@@ -1,43 +1,42 @@
 <script setup lang="ts">
 import { Head, Link, usePage } from '@inertiajs/vue3';
-import { login, logout, register } from '@/routes';
+import { computed } from 'vue';
+import ChristmasLayout from '@/layouts/ChristmasLayout.vue';
+import { register } from '@/routes';
+
+defineOptions({ layout: ChristmasLayout });
 
 const page = usePage();
+
+const child = computed(() => page.props.auth.child);
 </script>
 
 <template>
-    <main class="flex min-h-screen flex-col items-center justify-center gap-4">
-        <Head title="Hello World" />
+    <Head title="Accueil" />
 
-        <h1 class="text-4xl font-semibold">Hello World</h1>
-        <p class="text-sm text-gray-500">Dadabe Noely</p>
+    <section class="mx-auto max-w-2xl text-center">
+        <h1 class="font-display text-5xl font-bold text-berry">
+            Écris au Père Noël
+        </h1>
+        <p class="mt-4 text-lg text-bark-soft">
+            Choisis tes cadeaux préférés sans dépasser tes bons points, puis
+            envoie ta liste au Père Noël.
+        </p>
 
-        <div
-            v-if="page.props.auth.child"
-            class="flex flex-col items-center gap-2"
+        <p v-if="child" class="mt-8 text-lg">
+            Il te reste
+            <span class="font-display font-bold text-pine">
+                {{ child.available_points }} bons points
+            </span>
+            à dépenser.
+        </p>
+
+        <Link
+            v-else
+            :href="register()"
+            class="mt-8 inline-block rounded-cozy bg-berry px-8 py-3 font-display text-lg font-semibold text-cream hover:bg-berry-dark"
         >
-            <p class="text-sm">
-                Connecté avec {{ page.props.auth.child.email }} —
-                <span class="font-semibold"
-                    >{{ page.props.auth.child.bonus_points }} bons points</span
-                >
-            </p>
-            <Link
-                :href="logout()"
-                method="post"
-                as="button"
-                class="text-sm text-red-700 underline"
-                >Déconnexion</Link
-            >
-        </div>
-
-        <div v-else class="flex gap-4 text-sm">
-            <Link :href="login()" class="text-red-700 underline"
-                >Connexion</Link
-            >
-            <Link :href="register()" class="text-red-700 underline"
-                >Inscription</Link
-            >
-        </div>
-    </main>
+            Je m'inscris
+        </Link>
+    </section>
 </template>

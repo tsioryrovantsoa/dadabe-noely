@@ -1,27 +1,15 @@
 <script setup lang="ts">
-import { Head, Link, usePage } from '@inertiajs/vue3';
-import { logout } from '@/routes/admin';
+import { Head } from '@inertiajs/vue3';
+import AdminLayout from '@/layouts/AdminLayout.vue';
 
-const page = usePage();
+defineOptions({ layout: AdminLayout });
 </script>
 
 <template>
-    <main class="min-h-screen p-8">
-        <Head title="Administration" />
+    <Head title="Administration" />
 
-        <div class="flex items-center justify-between">
-            <h1 class="text-2xl font-semibold">Administration</h1>
-            <Link
-                :href="logout()"
-                method="post"
-                as="button"
-                class="text-sm text-red-700 underline"
-                >Déconnexion</Link
-            >
-        </div>
-
-        <p class="mt-2 text-sm text-gray-500">
-            Connecté en tant que {{ page.props.auth.admin?.login }}.
-        </p>
-    </main>
+    <h1 class="font-display text-3xl font-bold text-bark">Tableau de bord</h1>
+    <p class="mt-2 text-bark-soft">
+        Les catégories, les cadeaux et les statistiques arrivent ici.
+    </p>
 </template>

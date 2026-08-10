@@ -30,6 +30,19 @@ class Child extends Authenticatable
         return $this->hasMany(Wish::class);
     }
 
+    public function getSpentPoints(): int
+    {
+        return $this->wishes()
+            ->with('gift')
+            ->get()
+            ->sum(fn (Wish $wish) => $wish->quantity * $wish->gift->points);
+    }
+
+    public function getAvailablePoints(): int
+    {
+        return $this->bonus_points - $this->getSpentPoints();
+    }
+
     /**
      * @return array<string, string>
      */

@@ -1,4 +1,4 @@
-import type { Auth } from '@/types';
+import type { Auth, Flash } from '@/types';
 
 declare module 'vite/client' {
     interface ImportMetaEnv {
@@ -17,6 +17,7 @@ declare module '@inertiajs/core' {
         sharedPageProps: {
             name: string;
             auth: Auth;
+            flash: Flash;
             [key: string]: unknown;
         };
     }

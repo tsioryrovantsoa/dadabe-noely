@@ -8,4 +8,24 @@
         Instrument Sans, ui-sans-serif, system-ui, sans-serif,
         'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
         'Noto Color Emoji';
+    --font-display: Fredoka, var(--font-sans);
+
+    --color-cream: #fdf5e9;
+    --color-cream-dark: #f3e6d2;
+    --color-berry: #b3242b;
+    --color-berry-dark: #8a1a20;
+    --color-berry-light: #e8555c;
+    --color-pine: #1f5138;
+    --color-pine-dark: #163c29;
+    --color-pine-light: #2f7a52;
+    --color-gold: #d9a441;
+    --color-bark: #4a3b32;
+    --color-bark-soft: #7d6a5d;
+
+    --radius-cozy: 1.25rem;
+}
+
+body {
+    background-color: var(--color-cream);
+    color: var(--color-bark);
 }

@@ -4,12 +4,14 @@ import { store } from '@/actions/App/Http/Controllers/Auth/AdminSessionControlle
 </script>
 
 <template>
-    <main class="flex min-h-screen items-center justify-center p-6">
+    <main class="flex min-h-screen items-center justify-center bg-bark p-6">
         <Head title="Connexion administrateur" />
 
-        <div class="w-full max-w-sm">
-            <h1 class="text-2xl font-semibold">Administration</h1>
-            <p class="mt-1 text-sm text-gray-500">
+        <div class="w-full max-w-sm rounded-cozy bg-cream p-8 shadow-lg">
+            <h1 class="font-display text-2xl font-bold text-bark">
+                Administration
+            </h1>
+            <p class="mt-1 text-sm text-bark-soft">
                 Espace réservé aux lutins du Père Noël.
             </p>
 
@@ -26,9 +28,9 @@ import { store } from '@/actions/App/Http/Controllers/Auth/AdminSessionControlle
                         type="text"
                         autocomplete="username"
                         required
-                        class="rounded-md border px-3 py-2"
+                        class="rounded-xl border border-cream-dark bg-white px-4 py-2.5 focus:border-pine focus:outline-none"
                     />
-                    <p v-if="errors.login" class="text-sm text-red-600">
+                    <p v-if="errors.login" class="text-sm text-berry">
                         {{ errors.login }}
                     </p>
                 </div>
@@ -43,9 +45,9 @@ import { store } from '@/actions/App/Http/Controllers/Auth/AdminSessionControlle
                         type="password"
                         autocomplete="current-password"
                         required
-                        class="rounded-md border px-3 py-2"
+                        class="rounded-xl border border-cream-dark bg-white px-4 py-2.5 focus:border-pine focus:outline-none"
                     />
-                    <p v-if="errors.password" class="text-sm text-red-600">
+                    <p v-if="errors.password" class="text-sm text-berry">
                         {{ errors.password }}
                     </p>
                 </div>
@@ -53,7 +55,7 @@ import { store } from '@/actions/App/Http/Controllers/Auth/AdminSessionControlle
                 <button
                     type="submit"
                     :disabled="processing"
-                    class="rounded-md bg-green-800 px-4 py-2 text-white disabled:opacity-50"
+                    class="rounded-cozy bg-pine px-6 py-3 font-display font-semibold text-cream hover:bg-pine-dark disabled:opacity-50"
                 >
                     {{ processing ? 'Connexion...' : 'Se connecter' }}
                 </button>
