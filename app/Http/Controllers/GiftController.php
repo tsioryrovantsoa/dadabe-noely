@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SearchGiftsRequest;
 use App\Models\Category;
 use App\Models\Gift;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -31,10 +32,14 @@ class GiftController extends Controller
         ]);
     }
 
-    public function show(Gift $gift): Response
+    public function show(Request $request, Gift $gift): Response
     {
+        $child = $request->user('child');
+
         return Inertia::render('Gifts/Show', [
             'gift' => $gift->load('category'),
+            'isInWishlist' => (bool) $child?->wishes()->where('gift_id', $gift->id)->exists(),
+            'isWishlistValidated' => (bool) $child?->hasValidatedWishlist(),
         ]);
     }
 }

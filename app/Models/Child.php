@@ -30,6 +30,11 @@ class Child extends Authenticatable
         return $this->hasMany(Wish::class);
     }
 
+    public function hasValidatedWishlist(): bool
+    {
+        return $this->wishes()->where('is_validated', true)->exists();
+    }
+
     public function getSpentPoints(): int
     {
         return $this->wishes()

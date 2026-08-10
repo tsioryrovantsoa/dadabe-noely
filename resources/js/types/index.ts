@@ -33,6 +33,14 @@ export type Gift = {
     category: Category;
 };
 
+export type Wish = {
+    id: number;
+    quantity: number;
+    wished_at: string;
+    is_validated: boolean;
+    gift: Gift;
+};
+
 export type PaginationLink = {
     url: string | null;
     label: string;

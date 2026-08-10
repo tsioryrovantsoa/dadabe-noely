@@ -4,6 +4,7 @@ import { computed } from 'vue';
 import FlashMessages from '@/components/FlashMessages.vue';
 import { home, login, logout, register } from '@/routes';
 import { index as giftsIndex } from '@/routes/gifts';
+import { index as wishesIndex } from '@/routes/wishes';
 
 const page = usePage();
 
@@ -29,6 +30,12 @@ const child = computed(() => page.props.auth.child);
                     </Link>
 
                     <template v-if="child">
+                        <Link
+                            :href="wishesIndex()"
+                            class="underline-offset-4 hover:underline"
+                        >
+                            Mes souhaits
+                        </Link>
                         <span
                             class="rounded-full bg-gold px-4 py-1.5 font-display font-semibold text-bark"
                         >
