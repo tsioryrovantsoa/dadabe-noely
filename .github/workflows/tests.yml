@@ -1,7 +1,5 @@
 name: tests
 
-# Déclenchement automatique désactivé temporairement (compte GitHub bloqué).
-# Pour le réactiver, décommenter les lignes push/pull_request ci-dessous.
 on:
   workflow_dispatch:
   # push:
