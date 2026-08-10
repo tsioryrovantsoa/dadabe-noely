@@ -38,6 +38,10 @@ class HandleInertiaRequests extends Middleware
         return [
             ...parent::share($request),
             'name' => config('app.name'),
+            'auth' => [
+                'child' => $request->user('child')?->only(['id', 'email', 'bonus_points']),
+                'admin' => $request->user('admin')?->only(['id', 'login']),
+            ],
         ];
     }
 }

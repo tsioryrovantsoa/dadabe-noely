@@ -1,4 +1,4 @@
-export {};
+import type { Auth } from '@/types';
 
 declare module 'vite/client' {
     interface ImportMetaEnv {
@@ -16,6 +16,7 @@ declare module '@inertiajs/core' {
     export interface InertiaConfig {
         sharedPageProps: {
             name: string;
+            auth: Auth;
             [key: string]: unknown;
         };
     }
