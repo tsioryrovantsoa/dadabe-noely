@@ -16,8 +16,6 @@ jobs:
   ci:
     runs-on: ubuntu-latest
 
-    # La CI n'a pas besoin du conteneur MySQL : on force SQLite,
-    # ces variables ont priorité sur celles du fichier .env.
     env:
       DB_CONNECTION: sqlite
       DB_DATABASE: database/database.sqlite
