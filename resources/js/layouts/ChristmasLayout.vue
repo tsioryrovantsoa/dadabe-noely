@@ -3,6 +3,7 @@ import { Link, usePage } from '@inertiajs/vue3';
 import { computed } from 'vue';
 import FlashMessages from '@/components/FlashMessages.vue';
 import { home, login, logout, register } from '@/routes';
+import { index as giftsIndex } from '@/routes/gifts';
 
 const page = usePage();
 
@@ -20,6 +21,13 @@ const child = computed(() => page.props.auth.child);
                 </Link>
 
                 <nav class="flex flex-wrap items-center gap-5 text-sm">
+                    <Link
+                        :href="giftsIndex()"
+                        class="underline-offset-4 hover:underline"
+                    >
+                        Catalogue
+                    </Link>
+
                     <template v-if="child">
                         <span
                             class="rounded-full bg-gold px-4 py-1.5 font-display font-semibold text-bark"
